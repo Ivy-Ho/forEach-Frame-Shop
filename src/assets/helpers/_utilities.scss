@@ -1,0 +1,60 @@
+.logo-ff {
+    font-family: 'cwTeXYen','Baloo Tamma 2', sans-serif;
+  }
+.logo-fz {
+  font-size: 38px;
+}
+
+.opacity09 {
+  opacity: 0.9;
+}
+.opacity05 {
+  opacity: 0.5;
+}
+
+.tbrl-0 {
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+
+.background-size-cover {
+  background-size: cover;
+}
+.backgroun-repeat-norepeat {
+  background-repeat: no-repeat;
+}
+.background-position-center {
+  background-position: center;
+}
+
+
+.bg-parallax {
+  overflow: hidden;
+  background-attachment: fixed;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+// order sm
+@media (min-width: 568px) {
+  .order-sm-1 {
+      order: 1;
+  }
+  .order-sm-2 {
+      order: 2;
+  }
+}
+
+// qty input group
+  .qty-btn-border {
+    border: 1px solid #848484;
+  }
+  .qty-input-border {
+    border-top: 1px solid #848484;
+    border-bottom: 1px solid#848484;
+    border-right: none;
+    border-left: none;
+  }
