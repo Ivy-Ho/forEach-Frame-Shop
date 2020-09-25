@@ -28,15 +28,6 @@
               <router-link class="nav-link" to="/checkout">結帳({{ cart.length }})
               </router-link>
             </li>
-            <!-- <li class="nav-item">
-              <div class="dropdown">
-                <button class="btn btn-sm position-relative" data-toggle="dropdown" >
-                  <i class="fas fa-shopping-cart text-dark fa-2x" aria-hidden="true"></i>
-                  <span class="badge-pill badge-danger position-absolute bage-position">2</span>
-                </button>
-                <CartDropDown></CartDropDown>
-              </div>
-            </li> -->
           </ul>
         </div>
       </div>
@@ -45,12 +36,10 @@
 </template>
 
 <script>
-// import CartDropDown from '@/components/CartDropDown.vue';
 
 export default {
   name: 'Navbar',
   components: {
-    // CartDropDown,
   },
   data() {
     return {

@@ -101,12 +101,10 @@ export default {
       // 取得遠端單筆資料
       this.$http.get(url)
         .then((res) => {
-          console.log('後台取得單一訂單細節', res);
           this.tempOrder = res.data.data;
           $('#orderModal').modal('show');
           this.loadingBtn = ''; // 清除
-        }).catch((err) => {
-          console.log(err.response);
+        }).catch(() => {
           this.loadingBtn = ''; // 清除
         });
     },
@@ -117,12 +115,10 @@ export default {
       this.$http.get(url)
         .then((res) => {
           this.isLoading = false;
-          console.log('後台取得所有訂單', res);
           this.orders = res.data.data;
           this.pagination = res.data.meta.pagination;
-        }).catch((err) => {
+        }).catch(() => {
           this.isLoading = false;
-          console.log(err);
         });
     },
     closeModal() {
@@ -150,12 +146,11 @@ export default {
             `已修改訂單付款狀態為 ${paidStatus}`,
             'success');
           this.getOrders();
-        }).catch((err) => {
+        }).catch(() => {
           this.isLoading = false;
           this.$bus.$emit('message:push',
             '出現錯誤!',
             'danger');
-          console.log(err.response);
         });
     },
   },

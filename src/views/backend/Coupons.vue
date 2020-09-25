@@ -291,7 +291,6 @@ export default {
       const url = `${process.env.VUE_APP_APIPATH}api/${process.env.VUE_APP_UUID}/admin/ec/coupons`;
       this.$http.get(url)
         .then((res) => {
-          console.log('取得後台所有優惠券資料', res);
           this.coupons = res.data.data;
           this.isLoading = false;
         });
@@ -321,11 +320,10 @@ export default {
             status,
             'success');
           this.getCoupons();
-        }).catch((err) => {
+        }).catch(() => {
           this.$bus.$emit('message:push',
             '出現錯誤!',
             'danger');
-          console.log(err.response);
           this.isLoading = false;
         });
     },
@@ -341,11 +339,10 @@ export default {
             'success');
           this.getCoupons();
           this.isLoading = false;
-        }).catch((err) => {
+        }).catch(() => {
           this.$bus.$emit('message:push',
             '出現錯誤!',
             'danger');
-          console.log(err.response);
           this.isLoading = false;
         });
     },

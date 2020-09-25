@@ -11,7 +11,7 @@
           <div class="row align-items-center">
             <div class="col-12 col-md-6 py-2">
               <label class="mb-0 h4" for="email">
-                <i class="far fa-paper-plane mr-2"></i>取得最新消息
+                <i class="far fa-paper-plane mr-2"></i>訂閱取得最新消息
               </label>
             </div>
             <form class="col-12 col-md-6 py-2" @submit.prevent="subscribe">

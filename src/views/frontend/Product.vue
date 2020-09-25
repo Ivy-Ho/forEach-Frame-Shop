@@ -134,11 +134,9 @@ export default {
       this.$http.get(`${process.env.VUE_APP_APIPATH}api/${process.env.VUE_APP_UUID}/ec/product/${id}`)
         .then((res) => {
           this.isLoading = false;
-          console.log(res);
           this.product = res.data.data;
-        }).catch((err) => {
+        }).catch(() => {
           this.isLoading = false;
-          console.log(err.response);
         });
     },
     addToCart(id, quantity = 1) {
@@ -159,9 +157,8 @@ export default {
           this.$bus.$emit('message:push',
             '加入成功!',
             'success');
-        }).catch((err) => {
+        }).catch(() => {
           this.status.loadingCart = '';
-          console.log(err.response.data.errors);
           this.$bus.$emit('message:push',
             '加入失敗!該產品已在購物車內~',
             'danger');
@@ -170,3 +167,17 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+  /* qty input group start*/
+  .qty-btn-border {
+    border: 1px solid #848484;
+  }
+  .qty-input-border {
+    border-top: 1px solid #848484;
+    border-bottom: 1px solid#848484;
+    border-right: none;
+    border-left: none;
+  }
+  /* qty input group end*/
+</style>

@@ -58,19 +58,16 @@ export default {
       // 確認 Token 狀態 POST api/auth/check
       const url = `${process.env.VUE_APP_APIPATH}api/auth/check`;
       this.$http.post(url, { api_token: this.token })
-        .then((res) => {
+        .then(() => {
           // 登入沒有問題
-          console.log(res);
           this.checkSuccess = true;
-        }).catch((err) => {
+        }).catch(() => {
           // 驗證失敗，轉回登入頁
-          console.log(err.response);
           this.$router.push('/login');
         });
     },
     signout() {
       document.cookie = 'hexToken=;expires=;';
-      console.log('token 已清除');
       this.$router.push('/login');
     },
   },

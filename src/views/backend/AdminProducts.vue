@@ -124,8 +124,6 @@ export default {
               this.tempProduct = res.data.data;
               $('#productModal').modal('show');
               this.loadingBtn = ''; // 清除
-            }).catch((err) => {
-              console.log(err.response);
             });
           break;
         }
@@ -146,9 +144,8 @@ export default {
           this.isLoading = false;
           this.products = res.data.data;
           this.pagination = res.data.meta.pagination;
-        }).catch((err) => {
+        }).catch(() => {
           this.isLoading = false;
-          console.log(err.response);
         });
     },
     closeModal() {

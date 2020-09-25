@@ -128,9 +128,8 @@ export default {
           this.isLoading = false;
           this.cart = res.data.data;
           this.updateTotal();
-        }).catch((err) => {
+        }).catch(() => {
           this.isLoading = false;
-          console.log(err);
         });
     },
     updateTotal() {
@@ -154,9 +153,8 @@ export default {
         .then(() => {
           this.status.loadingUpdateCart = '';
           this.getCart();
-        }).catch((err) => {
+        }).catch(() => {
           this.status.loadingUpdateCart = '';
-          console.log(err);
         });
     },
     removeAllCartItem() {
@@ -164,13 +162,11 @@ export default {
       //   前台刪除購物車全部資料 DELETE api/{uuid}/ec/shopping/all/product
       const url = `${process.env.VUE_APP_APIPATH}api/${process.env.VUE_APP_UUID}/ec/shopping/all/product`;
       this.$http.delete(url)
-        .then((res) => {
+        .then(() => {
           this.isLoading = false;
-          console.log(res);
           this.getCart();
-        }).catch((err) => {
+        }).catch(() => {
           this.isLoading = false;
-          console.log(err);
         });
     },
     removeCartItem(id) {
@@ -183,8 +179,6 @@ export default {
         .then(() => {
           this.status.loadingDeleteCart = id;
           this.getCart();
-        }).catch((err) => {
-          console.log(err);
         });
     },
   },

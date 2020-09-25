@@ -82,8 +82,6 @@ export default {
           this.isLoading = false;
           this.imgs = res.data.data;
           this.pagination = res.data.meta.pagination;
-        }).catch((err) => {
-          console.log(err.message);
         });
     },
     uploadFile() {
@@ -105,9 +103,8 @@ export default {
       }).then(() => {
         this.isLoading = false;
         this.getFile();
-      }).catch((err) => {
+      }).catch(() => {
         this.isLoading = false;
-        console.log(err.message);
       });
     },
     deleteFile(item) {
@@ -121,11 +118,10 @@ export default {
             '刪除成功!',
             'success');
           this.getFile();
-        }).catch((err) => {
+        }).catch(() => {
           this.$bus.$emit('message:push',
             '出現錯誤!',
             'danger');
-          console.log(err.message);
         });
     },
     copy(item) {

@@ -57,10 +57,11 @@ export default {
           this.isLoading = false;
           //  跳轉至後台產品列表
           this.$router.push('/admin/AdminProducts');
-        }).catch((err) => {
+        }).catch(() => {
           this.isLoading = false;
-          console.log(err);
-          alert('登入失敗! 請重新輸入~');
+          this.$bus.$emit('message:push',
+            '登入失敗! 請重新輸入~',
+            'danger');
         });
     },
   },

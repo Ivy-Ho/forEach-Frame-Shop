@@ -56,27 +56,27 @@
         <div class="row">
 
           <!-- sidebar start-->
-          <div class="col-12 col-md-4 mb-5">
+          <div class="col-12 col-md-3 mb-5">
             <div class="list-group">
-              <a href="#" class="list-group-item list-group-item-action active"
+              <a href="#" class="list-group-item list-group-item-action border-bottom active"
                data-toggle="list" role="tab"
                @click.prevent="selectCategory('all')">
                 全部商品
               </a>
               <a href="#"
-              class="list-group-item list-group-item-action"
+              class="list-group-item border-bottom list-group-item-action"
               data-toggle="list" role="tab"
               @click.prevent="selectCategory('basic')">
                 基本款
               </a>
               <a href="#"
-              class="list-group-item list-group-item-action"
+              class="list-group-item border-bottom list-group-item-action"
               data-toggle="list" role="tab"
               @click.prevent="selectCategory('design')">
                 設計款
               </a>
               <a href="#"
-              class="list-group-item list-group-item-action"
+              class="list-group-item border-bottom list-group-item-action"
               data-toggle="list" role="tab"
               @click.prevent="selectCategory('exclusive')">
                 獨家款
@@ -86,7 +86,7 @@
           <!-- sidebar end-->
 
           <!-- 產品列表 start -->
-          <div class="col-12 col-md-8">
+          <div class="col-12 col-md-9">
             <div class="row">
               <ul class="col-md-6 mb-4" v-for="item in filterProducts" :key="item.id">
                 <li class="card border-0 shadow-sm">
@@ -191,13 +191,11 @@ export default {
         .then((res) => {
         // vue-loading-overlay 元件關閉
           this.isLoading = false;
-          console.log(res);
           this.products = res.data.data;
           this.filterProducts = res.data.data;
           this.pagination = res.data.meta.pagination;
-        }).catch((err) => {
+        }).catch(() => {
           this.isLoading = false;
-          console.log(err.response);
         });
     },
     addToCart(id, quantity = 1) {
@@ -218,9 +216,8 @@ export default {
           this.$bus.$emit('message:push',
             '加入成功!',
             'success');
-        }).catch((err) => {
+        }).catch(() => {
           this.status.loadingCart = '';
-          console.log(err.response.data.errors);
           this.$bus.$emit('message:push',
             '加入失敗!該產品已在購物車內~',
             'danger');
