@@ -109,20 +109,18 @@ export default {
         // 後台更新商品資訊 PATCH api/{uuid}/admin/ec/product/{id}
         const url = `${process.env.VUE_APP_APIPATH}api/${process.env.VUE_APP_UUID}/admin/ec/product/${this.tempProduct.id}`;
         this.$http.patch(url, this.tempProduct)
-          .then((res) => {
+          .then(() => {
             this.loadingBtn = '';
             this.$bus.$emit('message:push',
               '產品更新成功!',
               'success');
-            console.log(res);
             // 觸發外部事件
             this.$emit('update');
-          }).catch((err) => {
+          }).catch(() => {
             this.loadingBtn = '';
             this.$bus.$emit('message:push',
               '出現錯誤!',
               'danger');
-            console.log(err.response);
           });
       } else {
         const id = new Date().getTime();
@@ -130,20 +128,18 @@ export default {
         const apiUrl = `${process.env.VUE_APP_APIPATH}api/${process.env.VUE_APP_UUID}/admin/ec/product`;
         // 使用 post 新增產品資訊至遠端
         this.$http.post(apiUrl, this.tempProduct)
-          .then((res) => {
+          .then(() => {
             this.loadingBtn = '';
             this.$bus.$emit('message:push',
               '產品新增成功!',
               'success');
-            console.log(res);
             // 觸發外部事件
             this.$emit('update');
-          }).catch((err) => {
+          }).catch(() => {
             this.loadingBtn = '';
             this.$bus.$emit('message:push',
               '出現錯誤!',
               'danger');
-            console.log(err.response);
           });
       }
     },

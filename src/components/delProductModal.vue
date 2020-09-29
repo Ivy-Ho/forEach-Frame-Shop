@@ -51,12 +51,11 @@ export default {
             'success');
           // 觸發外部事件
           this.$emit('update-delete');
-        }).catch((err) => {
+        }).catch(() => {
           this.loadingBtn = '';
           this.$bus.$emit('message:push',
             '出現錯誤!',
             'danger');
-          console.log(err.response);
         });
     },
   },

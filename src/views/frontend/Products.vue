@@ -7,12 +7,6 @@
      tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
-          <!-- <div class="modal-header border-0">
-            <h5 class="modal-title" id="exampleModalLabel">最新優惠消息</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div> -->
           <div class="position-relative discount-bgimg
            background-size-cover background-position-center min-height-300">
             <div class="position-absolute tbrl-0 bg-white opacity05 w-100 h-100 py-5">

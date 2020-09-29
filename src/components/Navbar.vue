@@ -60,9 +60,6 @@ export default {
       this.$http.get(url)
         .then((res) => {
           this.cart = res.data.data;
-          this.updateTotal();
-        }).catch((err) => {
-          console.log(err);
         });
     },
   },
