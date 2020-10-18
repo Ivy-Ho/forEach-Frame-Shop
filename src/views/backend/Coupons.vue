@@ -3,6 +3,7 @@
     <Loading :active.sync="isLoading" />
     <div class="text-right mt-4">
       <button
+        type="button"
         class="btn btn-primary"
         @click="openCouponModal('created')"
       >
@@ -40,12 +41,14 @@
           <td>
             <div class="btn-group">
               <button
+                type="button"
                 class="btn btn-outline-primary btn-sm"
                 @click="openCouponModal('edit', item)"
               >
                 編輯
               </button>
               <button
+                type="button"
                 class="btn btn-outline-danger btn-sm"
                 @click="openCouponModal('delete', item)"
               >
@@ -287,8 +290,10 @@ export default {
     },
     getCoupons() {
       this.isLoading = true;
+
       // 後台取得所有優惠券列表 GET api/{uuid}/admin/ec/coupons
       const url = `${process.env.VUE_APP_APIPATH}api/${process.env.VUE_APP_UUID}/admin/ec/coupons`;
+
       this.$http.get(url)
         .then((res) => {
           this.coupons = res.data.data;
@@ -297,8 +302,10 @@ export default {
     },
     updateCoupon() {
       this.isLoading = true;
+
       // 後台新增優惠券 POST api/{uuid}/admin/ec/coupon
       let api = `${process.env.VUE_APP_APIPATH}api/${process.env.VUE_APP_UUID}/admin/ec/coupon`;
+
       let httpMethod = '';
       let status = '優惠券新增成功!';
       if (this.status === 'created') {
@@ -306,6 +313,7 @@ export default {
       } else {
         // 後台更新指定優惠券內容 PATCH api/{uuid}/admin/ec/coupon/{id}
         api = `${process.env.VUE_APP_APIPATH}api/${process.env.VUE_APP_UUID}/admin/ec/coupon/${this.tempCoupon.id}`;
+
         status = '優惠券更新成功!';
         httpMethod = 'patch';
       }
@@ -315,7 +323,6 @@ export default {
       this.$http[httpMethod](api, this.tempCoupon)
         .then(() => {
           $('#couponModal').modal('hide');
-          // 傳送資料至 Toast.vue 元件
           this.$bus.$emit('message:push',
             status,
             'success');
@@ -329,8 +336,10 @@ export default {
     },
     delCoupon() {
       this.isLoading = true;
+
       // 後台刪除指定的優惠券 DELETE api/{uuid}/admin/ec/coupon/{id}
       const api = `${process.env.VUE_APP_APIPATH}api/${process.env.VUE_APP_UUID}/admin/ec/coupon/${this.tempCoupon.id}`;
+
       this.$http.delete(api)
         .then(() => {
           $('#delCouponModal').modal('hide');

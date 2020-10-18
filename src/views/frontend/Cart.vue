@@ -92,7 +92,7 @@
             </tfoot>
           </table>
           <router-link to="/checkout">
-            <button class="btn btn-primary w-100">訂單結帳</button>
+            <button type="button" class="btn btn-primary w-100">訂單結帳</button>
           </router-link>
         </div>
       </div>
@@ -106,8 +106,8 @@ export default {
   name: 'cart',
   data() {
     return {
-      cart: [], // 購物車產品資訊
-      cartTotal: 0, // 購物車總價
+      cart: [],
+      cartTotal: 0,
       isLoading: false,
       fullPage: true,
       status: {
@@ -125,10 +125,13 @@ export default {
 
       this.$http.get(url)
         .then((res) => {
-          this.isLoading = false;
           this.cart = res.data.data;
           this.updateTotal();
+          this.isLoading = false;
         }).catch(() => {
+          this.$bus.$emit('message:push',
+            '購物車列表載入失敗',
+            'danger');
           this.isLoading = false;
         });
     },
@@ -154,18 +157,21 @@ export default {
           this.status.loadingUpdateCart = '';
           this.getCart();
         }).catch(() => {
+          this.$bus.$emit('message:push',
+            '產品數量更新失敗',
+            'danger');
           this.status.loadingUpdateCart = '';
         });
     },
     removeAllCartItem() {
       this.isLoading = true;
+
       //   前台刪除購物車全部資料 DELETE api/{uuid}/ec/shopping/all/product
       const url = `${process.env.VUE_APP_APIPATH}api/${process.env.VUE_APP_UUID}/ec/shopping/all/product`;
+
       this.$http.delete(url)
         .then(() => {
-          this.isLoading = false;
           this.getCart();
-        }).catch(() => {
           this.isLoading = false;
         });
     },

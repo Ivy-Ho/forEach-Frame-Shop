@@ -5,13 +5,11 @@ Vue.use(VueRouter);
 
 const routes = [
   {
-    path: '/layout',
-    name: 'Layout',
+    path: '/',
     component: () => import('../views/Layout.vue'),
     children: [
       {
-        path: '/home',
-        name: 'Home',
+        path: '',
         component: () => import('../views/frontend/Home.vue'),
       },
       {
@@ -40,9 +38,9 @@ const routes = [
         component: () => import('../views/frontend/Checkout.vue'),
       },
       {
-        path: '/checkout-2',
-        name: 'Checkout-2',
-        component: () => import('../views/frontend/Checkout-2.vue'),
+        path: '/checkoutFinished',
+        name: 'CheckoutFinished',
+        component: () => import('../views/frontend/CheckoutFinished.vue'),
       },
     ],
   },

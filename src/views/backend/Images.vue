@@ -75,8 +75,10 @@ export default {
   methods: {
     getFile(num = 1) {
       this.isLoading = true;
+
       // 後台 取得所有檔案列表 GET api/{uuid}/admin/storage
       const url = `${process.env.VUE_APP_APIPATH}api/${process.env.VUE_APP_UUID}/admin/storage?page=${num}`;
+
       this.$http.get(url)
         .then((res) => {
           this.isLoading = false;
@@ -109,19 +111,22 @@ export default {
     },
     deleteFile(item) {
       this.loadingBtn = item.id;
+
       // 後台 刪除指定檔案 DELETE api/{uuid}/admin/storage/{id}
       const url = `${process.env.VUE_APP_APIPATH}api/${process.env.VUE_APP_UUID}/admin/storage/${item.id}`;
+
       this.$http.delete(url)
         .then(() => {
-          this.loadingBtn = '';
           this.$bus.$emit('message:push',
             '刪除成功!',
             'success');
           this.getFile();
+          this.loadingBtn = '';
         }).catch(() => {
           this.$bus.$emit('message:push',
             '出現錯誤!',
             'danger');
+          this.loadingBtn = '';
         });
     },
     copy(item) {

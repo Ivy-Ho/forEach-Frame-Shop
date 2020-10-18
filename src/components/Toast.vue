@@ -13,7 +13,7 @@
         <div
           class="inline-block rounded mr-2"
           style="width: 20px; height: 20px"
-          :class="`bg-${item.status}`">
+          :class="`bg-${ item.status }`">
         </div>
         <strong class="mr-auto logo-ff">迴圈 ∞ 選框</strong>
         <small>現在</small>
@@ -22,7 +22,7 @@
           class="ml-2 mb-1 close"
           data-dismiss="toast"
           aria-label="Close"
-          @click="closeToast(`toast-${i}`)">
+          @click="closeToast(`toast-${ i }`)">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -36,7 +36,7 @@
 <script>
 /* global $ */
 export default {
-  name: 'Toasts',
+  name: 'Toast',
   data() {
     return {
       messages: [],

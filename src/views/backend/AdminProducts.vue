@@ -4,7 +4,7 @@
     <h2 class="mt-3 text-center">後台產品管理列表</h2>
     <div>
       <div class="text-right">
-        <button class="btn btn-primary" @click="openModal('new')">
+        <button type="button" class="btn btn-primary" @click="openModal('new')">
             建立新的產品
         </button>
       </div>
@@ -45,13 +45,15 @@
             </td>
             <td>
               <div class="btn-group">
-                <button class="btn btn-outline-primary btn-sm"
+                <button type="button" class="btn btn-outline-primary btn-sm"
                  :disabled="loadingBtn === item.id" @click="openModal('edit', item)">
                   <span class="spinner-border spinner-border-sm"
                    role="status" aria-hidden="true" v-if="loadingBtn === item.id"></span>
                     編輯
                 </button>
-                <button class="btn btn-outline-danger btn-sm" @click="openModal('delete', item)">
+                <button type="button"
+                  class="btn btn-outline-danger btn-sm"
+                  @click="openModal('delete', item)">
                   刪除
                 </button>
               </div>
@@ -80,7 +82,7 @@
 <script>
 import Pagination from '@/components/Pagination.vue';
 import Productmodal from '@/components/Productmodal.vue';
-import Deletemodal from '@/components/delProductModal.vue';
+import Deletemodal from '@/components/DelProductModal.vue';
 
 /* global $ */
 export default {
@@ -113,20 +115,23 @@ export default {
           this.tempProduct = { imageUrl: [] };
           $('#productModal').modal('show');
           break;
-          // 編輯
+
+        // 編輯
         case 'edit': {
           this.loadingBtn = item.id;
+
           // 取得單一商品細節 GET api/{uuid}/admin/ec/product/{id}
           const url = `${process.env.VUE_APP_APIPATH}api/${process.env.VUE_APP_UUID}/admin/ec/product/${item.id}`;
-          // 取得遠端單筆資料
+
           this.$http.get(url)
             .then((res) => {
               this.tempProduct = res.data.data;
               $('#productModal').modal('show');
-              this.loadingBtn = ''; // 清除
+              this.loadingBtn = '';
             });
           break;
         }
+
         // 刪除
         case 'delete':
           $('#delProductModal').modal('show');
@@ -141,9 +146,9 @@ export default {
       const url = `${process.env.VUE_APP_APIPATH}api/${process.env.VUE_APP_UUID}/admin/ec/products?page= ${num}`;
       this.$http.get(url)
         .then((res) => {
-          this.isLoading = false;
           this.products = res.data.data;
           this.pagination = res.data.meta.pagination;
+          this.isLoading = false;
         }).catch(() => {
           this.isLoading = false;
         });

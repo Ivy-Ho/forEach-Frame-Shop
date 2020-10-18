@@ -54,14 +54,14 @@ export default {
           const { expired } = res.data;
           document.cookie = `hexToken=${token}; expired=${new Date(expired * 1000)}; path=/`;
 
-          this.isLoading = false;
           //  跳轉至後台產品列表
           this.$router.push('/admin/AdminProducts');
-        }).catch(() => {
           this.isLoading = false;
+        }).catch(() => {
           this.$bus.$emit('message:push',
             '登入失敗! 請重新輸入~',
             'danger');
+          this.isLoading = false;
         });
     },
   },

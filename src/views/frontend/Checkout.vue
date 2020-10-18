@@ -35,7 +35,7 @@
                      flex-lg-nowrap table-rwd-td">
                       <img
                       class="mr-2 mb-2 mb-lg-0 mt-2 mt-sm-0 td-img-100px td-img-width"
-                      :src="item.product.imageUrl[0]" alt="product image" />
+                      :src="item.product.imageUrl[0]" alt="產品圖片" />
                       <p class="mb-0">
                         {{ item.product.title }}
                       </p>
@@ -294,8 +294,8 @@ export default {
   name: 'cart',
   data() {
     return {
-      cart: [], // 購物車產品資訊
-      cartTotal: 0, // 購物車總價
+      cart: [],
+      cartTotal: 0,
       deliveryFee: 100,
       isLoading: false,
       fullPage: true,
@@ -325,9 +325,9 @@ export default {
 
       this.$http.get(url)
         .then((res) => {
-          this.isLoading = false;
           this.cart = res.data.data;
           this.updateTotal();
+          this.isLoading = false;
         });
     },
     updateTotal() {
@@ -349,9 +349,9 @@ export default {
 
       this.$http.patch(url, cart)
         .then(() => {
-          this.isLoading = false;
           this.$bus.$emit('get-cart');
           this.getCart();
+          this.isLoading = false;
         });
     },
     removeCartItem(id) {
@@ -369,8 +369,10 @@ export default {
     },
     createOrder() {
       this.isLoading = true;
+
       // 前台新增一筆訂單 POST api/{uuid}/ec/orders
       const url = `${process.env.VUE_APP_APIPATH}api/${process.env.VUE_APP_UUID}/ec/orders`;
+
       const order = { ...this.form };
       if (this.coupon.enabled) {
         order.coupon = this.coupon.code;
@@ -379,18 +381,20 @@ export default {
       }
       this.$http.post(url, order)
         .then(() => {
-          this.isLoading = false;
           this.$bus.$emit('get-cart');
           // 清空表單資料
           this.$data.form = this.$options.data().form;
           // 跳轉頁面
-          this.$router.push('/Checkout-2');
+          this.$router.push('/CheckoutFinished');
+          this.isLoading = false;
         });
     },
     addCoupon() {
       this.isLoading = true;
+
       // 前台透過優惠券 Code 去搜尋優惠券。 POST api/{uuid}/ec/coupon/search
       const url = `${process.env.VUE_APP_APIPATH}api/${process.env.VUE_APP_UUID}/ec/coupon/search`;
+
       this.$http.post(url, { code: this.coupon_code })
         .then((res) => {
           this.coupon = res.data.data;
@@ -435,17 +439,17 @@ export default {
     width: 100px;
   }
 
-    /* qty input group start */
-    .qty-btn-border {
-      border: 1px solid #000;
-    }
-    .qty-input-border {
-      border-top: 1px solid #000;
-      border-bottom: 1px solid #000;
-      border-right: none;
-      border-left: none;
-    }
-    /* qty input group end */
+  /* qty input group start */
+  .qty-btn-border {
+    border: 1px solid #000;
+  }
+  .qty-input-border {
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #000;
+    border-right: none;
+    border-left: none;
+  }
+  /* qty input group end */
 
   /* 響應式購物車表單 start */
   @media (max-width: 568px) {
@@ -498,7 +502,7 @@ export default {
 
   /* 購物車中沒有商品 start  */
   .checkout-bg {
-    background-image: url(https://images.unsplash.com/photo-1513161455079-7dc1de15ef3e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80);
+    background-image: url(https://hexschool-api.s3.us-west-2.amazonaws.com/custom/4Zxzdq6oTTGfsHO52A4trdP2hpmlRGfR4Nk47F7AAT2DdGZCvlzmqSpF8zcjPQbEWCg7h01iGMTd3u86OpB6ArODbfoFHSwpCdex0aG6I3F7Lll2IyEUYMGYUyLUlClE.jpg);
     background-repeat: no-repeat;
     background-position: right;
   }

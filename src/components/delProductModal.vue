@@ -1,5 +1,5 @@
 <template>
-    <div class="delProductModal">
+    <div>
       <div class="modal-dialog" role="document">
         <div class="modal-content border-0">
           <div class="modal-header bg-danger text-white">
@@ -31,7 +31,7 @@
 
 <script>
 export default {
-  name: 'delProductModal',
+  name: 'DelProductModal',
   props: ['tempProduct'],
   data() {
     return {
@@ -45,17 +45,17 @@ export default {
       // 使用 delete 刪除資料
       this.$http.delete(url, this.tempProduct)
         .then(() => {
-          this.loadingBtn = '';
           this.$bus.$emit('message:push',
             '產品刪除成功!',
             'success');
+          this.loadingBtn = '';
           // 觸發外部事件
           this.$emit('update-delete');
         }).catch(() => {
-          this.loadingBtn = '';
           this.$bus.$emit('message:push',
             '出現錯誤!',
             'danger');
+          this.loadingBtn = '';
         });
     },
   },

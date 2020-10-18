@@ -22,8 +22,9 @@
               <img class="w-100 border-double mb-3 mb-lg-0"
                 data-aos="fade-down"
                 data-aos-easing="linear"
-                data-aos-duration="1000"
-              src="https://images.unsplash.com/photo-1567899483262-ddc52107f829?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt="">
+                data-aos-duration="500"
+                src="https://hexschool-api.s3.us-west-2.amazonaws.com/custom/kDiuDGkZAv1yGBRR9qHDpCmhQRgTjgd3Gtq9FjjpvOj8EqOeAEwJDDSpWg4r8LyMtoqAO75Phsd5NtRO2uKXD6FxVzvuq4CGFHcjSM4DqaQFnEBcpI3IPTc5yWCVBKoz.jpg"
+                alt="迴字房間擺設">
             </div>
         </div>
       </section>
@@ -37,8 +38,9 @@
             <img class="w-100 border-double mb-3 mb-lg-0"
               data-aos="fade-down"
               data-aos-easing="linear"
-              data-aos-duration="1500"
-              src="https://images.unsplash.com/photo-1597432595519-0c32a3ae4651?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="">
+              data-aos-duration="500"
+              src="https://hexschool-api.s3.us-west-2.amazonaws.com/custom/NhtLd3PkAn0FaNYKVu112nxyxIqW0WnMU2fhJkFfr9KWVTLiTfSN1jI0Ln9TcPtSedqqqk7ZIgbBZqolfV8ugrtDklGN7546GebEA6QuJjsLRSkuwAIJDkZXpItaagJU.jpg"
+              alt="畫框">
           </div>
           <div class="px-lg-5 d-flex align-items-center">
             <p class="logo-ff h5 border-left border-white pl-2">
@@ -68,8 +70,9 @@
             <img class="w-100 border-double mb-3 mb-lg-0"
               data-aos="fade-down"
               data-aos-easing="linear"
-              data-aos-duration="1500"
-              src="https://images.unsplash.com/photo-1531981936561-347fb37a966a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80" alt="">
+              data-aos-duration="500"
+              src="https://hexschool-api.s3.us-west-2.amazonaws.com/custom/Yg4JyHFG4SzSsdbaYr4vObM6GQaNGd7KwYPVartRPXc2uvUmU7sw5lUS0QCPqRlxnBoP0XHOBlK0c3M7Im2e6mjURspQXDyno43gYC2cecn5RprOhaJfG0qewoxxfKjf.jpg"
+              alt="生活中的相框擺設">
           </div>
         </div>
       </section>

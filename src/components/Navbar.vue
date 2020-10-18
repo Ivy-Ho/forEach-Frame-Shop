@@ -2,7 +2,7 @@
   <!-- navebar start -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light opacity09">
       <div class="container">
-        <router-link class="navbar-brand" :to="{name: 'Home'}">
+        <router-link class="navbar-brand" to="/">
           <h1 class="logo-ff logo-fz text-secondary mb-0">
             迴圈 ∞ 選框
           </h1>
@@ -15,17 +15,13 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <router-link class="nav-link" to="/">首頁
-                <span class="sr-only">(current)</span></router-link>
+              <router-link class="nav-link h5 mb-0" to="/about">品牌故事</router-link>
             </li>
             <li class="nav-item">
-              <router-link class="nav-link" to="/about">品牌故事</router-link>
+              <router-link class="nav-link h5 mb-0" to="/products">產品列表</router-link>
             </li>
             <li class="nav-item">
-              <router-link class="nav-link" to="/products">產品列表</router-link>
-            </li>
-            <li class="nav-item">
-              <router-link class="nav-link" to="/checkout">結帳({{ cart.length }})
+              <router-link class="nav-link h5 mb-0" to="/checkout">結帳({{ cart.length }})
               </router-link>
             </li>
           </ul>

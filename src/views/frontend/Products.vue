@@ -32,7 +32,7 @@
       <div class="position-relative" style="min-height: 400px;">
         <div class="position-absolute bg-third"
          style="top:0; bottom: 0; left: 0; right: 0;
-        background-image:url(https://images.unsplash.com/photo-1542436781-fb5c64ed9ee6?ixlib=rb-1.2.1&auto=format&fit=crop&w=973&q=80);
+        background-image:url(https://hexschool-api.s3.us-west-2.amazonaws.com/custom/bZi0dUcwgiACYkis1NokYswLXZPP4zfkvxUHDLD0BYJpLS76hJSAL47cigdcZhsBFc5T07JK52LKr3yuxquad923aTrrpUetCVkviD6MNRtM5siIPXwh4kfdhtYzXsdG.jpg);
         background-position: center center; background-repeat: no-repeat; opacity: 0.9;">
           <div class="container h-100">
             <div class="row justify-content-end align-items-center h-100">
@@ -132,9 +132,9 @@
                 </li>
               </ul>
             </div>
-            <div class="d-flex justify-content-end">
+            <!-- <div class="d-flex justify-content-end">
               <Pagination :pages="pagination" @update="getProducts"></Pagination>
-            </div>
+            </div> -->
           </div>
           <!-- 產品列表 end -->
 
@@ -146,12 +146,12 @@
 
 <script>
 /* global $ */
-import Pagination from '@/components/Pagination.vue';
+// import Pagination from '@/components/Pagination.vue';
 
 export default {
   name: 'Products',
   components: {
-    Pagination,
+    // Pagination,
   },
   data() {
     return {
@@ -175,7 +175,6 @@ export default {
       this.$router.push(`/product/${item.id}`);
     },
     getProducts(num = 1) {
-      // vue-loading-overlay 元件開啟
       this.isLoading = true;
 
       // 取得前台所有商品列表 GET api/{uuid}/ec/products
@@ -183,12 +182,14 @@ export default {
 
       this.$http.get(url)
         .then((res) => {
-        // vue-loading-overlay 元件關閉
-          this.isLoading = false;
           this.products = res.data.data;
           this.filterProducts = res.data.data;
           this.pagination = res.data.meta.pagination;
+          this.isLoading = false;
         }).catch(() => {
+          this.$bus.$emit('message:push',
+            '產品列表載入失敗',
+            'danger');
           this.isLoading = false;
         });
     },
@@ -205,16 +206,16 @@ export default {
 
       this.$http.post(url, cart)
         .then(() => {
-          this.status.loadingCart = '';
           this.$bus.$emit('get-cart');
           this.$bus.$emit('message:push',
             '加入成功!',
             'success');
-        }).catch(() => {
           this.status.loadingCart = '';
+        }).catch(() => {
           this.$bus.$emit('message:push',
             '加入失敗!該產品已在購物車內~',
             'danger');
+          this.status.loadingCart = '';
         });
     },
     selectCategory(status) {
@@ -270,8 +271,7 @@ export default {
 
 <style scoped>
   .discount-bgimg {
-    background-image: url(https://images.unsplash.com/photo-1575909699392-49857a8e854e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80);
-
+    background-image: url(https://hexschool-api.s3.us-west-2.amazonaws.com/custom/3Fy09A1uzZNZKIIKfzvog7Qqyza3XFapScyEzOL0Rebnofu0tVG47xzG0D6c0jpHZZJsM3QtY14JTEf5tYDQfcaPz73uSfzXdBGZMAKLXnBSqWJsfIOydB95dIRYbGrv.jpg);
   }
   .top-150 {
     top: 150px;

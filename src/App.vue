@@ -16,7 +16,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import './assets/all';
+@import './assets/scss/all';
 @import url(https://fonts.googleapis.com/earlyaccess/notosanstc.css);
 @import url(https://fonts.googleapis.com/earlyaccess/cwtexyen.css);
 @import url(https://fonts.googleapis.com/css2?family=Baloo+Tamma+2&display=swap);

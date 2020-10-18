@@ -96,6 +96,7 @@
 
 <script>
 export default {
+  name: 'Productmodal',
   props: ['tempProduct'],
   data() {
     return {
@@ -110,17 +111,17 @@ export default {
         const url = `${process.env.VUE_APP_APIPATH}api/${process.env.VUE_APP_UUID}/admin/ec/product/${this.tempProduct.id}`;
         this.$http.patch(url, this.tempProduct)
           .then(() => {
-            this.loadingBtn = '';
             this.$bus.$emit('message:push',
               '產品更新成功!',
               'success');
             // 觸發外部事件
             this.$emit('update');
-          }).catch(() => {
             this.loadingBtn = '';
+          }).catch(() => {
             this.$bus.$emit('message:push',
               '出現錯誤!',
               'danger');
+            this.loadingBtn = '';
           });
       } else {
         const id = new Date().getTime();
@@ -129,17 +130,17 @@ export default {
         // 使用 post 新增產品資訊至遠端
         this.$http.post(apiUrl, this.tempProduct)
           .then(() => {
-            this.loadingBtn = '';
             this.$bus.$emit('message:push',
               '產品新增成功!',
               'success');
             // 觸發外部事件
             this.$emit('update');
-          }).catch(() => {
             this.loadingBtn = '';
+          }).catch(() => {
             this.$bus.$emit('message:push',
               '出現錯誤!',
               'danger');
+            this.loadingBtn = '';
           });
       }
     },

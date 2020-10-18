@@ -26,7 +26,7 @@ export default {
 
 <style scoped>
   .checkout2-bg {
-    background-image: url(https://images.unsplash.com/photo-1567225477277-c8162eb4991d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80);
+    background-image: url(https://hexschool-api.s3.us-west-2.amazonaws.com/custom/FNjKfGuE2VuF4YGuDHEHGsLdmNRkbWAdCqcwe4Xdy1HvUWQgZq5q3KR1uG5lI0ZB5HkyyS0Efcgmyf9S0IHdi2eqWBrDtdAW08WUpUPLqDODLXBWuLgHnWN7mJMtPuuf.jpg);
     background-repeat: no-repeat;
     background-position: right;
   }

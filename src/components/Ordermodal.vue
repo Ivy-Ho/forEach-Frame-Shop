@@ -48,12 +48,13 @@
 
 <script>
 export default {
+  name: 'Ordermodal',
   props: ['tempOrder'],
 };
 </script>
 
 <style>
-.close {
+  .close {
     z-index: 1000;
-}
+  }
 </style>

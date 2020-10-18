@@ -6,7 +6,7 @@
       <div class="row mb-3">
         <!-- product img start -->
         <div class="col-12 col-md-6">
-          <img :src="product.imageUrl" class="w-100" alt="">
+          <img :src="product.imageUrl" class="w-100" alt="產品圖片">
         </div>
         <!-- product img end -->
 
@@ -17,7 +17,7 @@
             {{ product.origin_price | thousands }} 元
           </div>
           <div class="mb-3" v-else>
-            <del><small>原價 {{ product.origin_price | thousands  }} 元</small></del>
+            <del><small>原價 {{ product.origin_price | thousands }} 元</small></del>
             <div class="h4 text-primary">
              <span>{{ product.price | thousands }}</span>元
             </div>
@@ -61,13 +61,13 @@
               <span>產品描述</span>
             </h5>
             <p class="text-third">
-              {{product.description}}
+              {{ product.description }}
             </p>
             <h5 class="font-weight-normal">
               <span>產品規格</span>
             </h5>
             <p class="text-third">
-              {{product.content}}
+              {{ product.content }}
             </p>
           </div>
 
@@ -81,7 +81,7 @@
             <span>產品描述</span>
           </h5>
           <p class="text-third">
-            {{product.description}}
+            {{ product.description }}
           </p>
         </div>
         <div class="col-12 col-sm-6">
@@ -89,7 +89,7 @@
             <span>產品規格</span>
           </h5>
           <p class="text-third">
-            {{product.content}}
+            {{ product.content }}
           </p>
         </div>
       </div>
@@ -133,9 +133,12 @@ export default {
       const { id } = this.$route.params;
       this.$http.get(`${process.env.VUE_APP_APIPATH}api/${process.env.VUE_APP_UUID}/ec/product/${id}`)
         .then((res) => {
-          this.isLoading = false;
           this.product = res.data.data;
+          this.isLoading = false;
         }).catch(() => {
+          this.$bus.$emit('message:push',
+            '產品列表載入失敗',
+            'danger');
           this.isLoading = false;
         });
     },
@@ -152,16 +155,16 @@ export default {
 
       this.$http.post(url, cart)
         .then(() => {
-          this.status.loadingCart = '';
           this.$bus.$emit('get-cart');
           this.$bus.$emit('message:push',
             '加入成功!',
             'success');
-        }).catch(() => {
           this.status.loadingCart = '';
+        }).catch(() => {
           this.$bus.$emit('message:push',
             '加入失敗!該產品已在購物車內~',
             'danger');
+          this.status.loadingCart = '';
         });
     },
   },

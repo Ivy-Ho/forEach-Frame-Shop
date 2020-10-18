@@ -2,7 +2,7 @@
   <div class="dashboard">
     <!-- navebar start -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <router-link class="navbar-brand" :to="{name: 'Home'}">
+      <router-link class="navbar-brand" to="/">
         <h1 class="logo-fz logo-ff text-secondary mb-0">
           迴圈 ∞ 選框
         </h1>
@@ -26,12 +26,12 @@
           <li class="nav-item">
             <router-link class="nav-link" to="/admin/coupons">優惠券管理</router-link>
           </li>
-          <button class="btn btn-primary ml-2" @click.prevent="signout">登出</button>
+          <button type="button" class="btn btn-primary ml-2" @click.prevent="signout">登出</button>
         </ul>
       </div>
     </nav>
     <!-- navebar end -->
-    <router-view :token="token" v-if="checkSuccess"></router-view>
+    <router-view v-if="checkSuccess"></router-view>
   </div>
 </template>
 
@@ -52,15 +52,14 @@ export default {
     checkLogin() {
       // 取得token
       this.token = document.cookie.replace(/(?:(?:^|.*;\s*)hexToken\s*=\s*([^;]*).*$)|^.*$/, '$1');
-      // 將token作為預設值
-      this.$http.defaults.headers.common.Authorization = `Bearer ${this.token}`;
 
       // 確認 Token 狀態 POST api/auth/check
       const url = `${process.env.VUE_APP_APIPATH}api/auth/check`;
       this.$http.post(url, { api_token: this.token })
         .then(() => {
-          // 登入沒有問題
           this.checkSuccess = true;
+          // 將token作為預設值
+          this.$http.defaults.headers.common.Authorization = `Bearer ${this.token}`;
         }).catch(() => {
           // 驗證失敗，轉回登入頁
           this.$router.push('/login');

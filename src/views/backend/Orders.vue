@@ -45,6 +45,7 @@
           </td>
           <td>
             <button class="btn btn-outline-primary btn-sm"
+              type="button"
               :disabled="loadingBtn === item.id"
               @click="openModal(item)">
               <span class="spinner-border spinner-border-sm"
@@ -98,25 +99,27 @@ export default {
 
       // 後台取得單一訂單細節 GET api/{uuid}/admin/ec/orders/{id}
       const url = `${process.env.VUE_APP_APIPATH}api/${process.env.VUE_APP_UUID}/admin/ec/orders/${item.id}`;
-      // 取得遠端單筆資料
+
       this.$http.get(url)
         .then((res) => {
           this.tempOrder = res.data.data;
           $('#orderModal').modal('show');
-          this.loadingBtn = ''; // 清除
+          this.loadingBtn = '';
         }).catch(() => {
-          this.loadingBtn = ''; // 清除
+          this.loadingBtn = '';
         });
     },
     getOrders(num = 1) {
       this.isLoading = true;
+
       // 取得所有訂單列表 GET api/{uuid}/admin/ec/orders
       const url = `${process.env.VUE_APP_APIPATH}api/${process.env.VUE_APP_UUID}/admin/ec/orders?page= ${num}`;
+
       this.$http.get(url)
         .then((res) => {
-          this.isLoading = false;
           this.orders = res.data.data;
           this.pagination = res.data.meta.pagination;
+          this.isLoading = false;
         }).catch(() => {
           this.isLoading = false;
         });
@@ -141,16 +144,16 @@ export default {
 
       this.$http.patch(url, item.id)
         .then(() => {
-          this.isLoading = false;
           this.$bus.$emit('message:push',
             `已修改訂單付款狀態為 ${paidStatus}`,
             'success');
           this.getOrders();
-        }).catch(() => {
           this.isLoading = false;
+        }).catch(() => {
           this.$bus.$emit('message:push',
             '出現錯誤!',
             'danger');
+          this.isLoading = false;
         });
     },
   },

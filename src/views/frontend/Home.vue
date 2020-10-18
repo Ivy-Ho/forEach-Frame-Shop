@@ -9,7 +9,7 @@
             <div class="bg-white opacity09 py-4" data-aos="fade-up" data-aos-duration="3000">
               <h2 class="logo-fz logo-ff">迴圈 ∞ 選框</h2>
               <p class="text-muted">每一段回憶都值得以最好的方式陳列</p>
-              <router-link :to="{name: 'Products'}">
+              <router-link :to="{ name: 'Products' }">
                 <button type="button" class="btn btn-primary">開始選購</button>
               </router-link>
             </div>
@@ -36,7 +36,7 @@
             </div>
           </div>
           <div class="col-12 col-sm-6">
-            <img data-aos="flip-left" class="w-100" src="https://images.unsplash.com/photo-1513519245088-0e12902e5a38?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80" alt="">
+            <img data-aos="flip-left" class="w-100" src="https://hexschool-api.s3.us-west-2.amazonaws.com/custom/aYrFAhbDf3wARYKsdLBZKk95wFamYHiVqmhpWmd7UcYyzbj0yGnOyg6mQ71R4fnIQ8L1X0DcuLxk08AnrRHCRSTq7b1nKMY78P5M6A1sW6sL5eKtpf8CG82ddJuAGkZv.jpg" alt="產品陳列圖片">
           </div>
         </li>
         <!-- 2 -->
@@ -53,7 +53,7 @@
             </div>
           </div>
           <div class="col-12 col-sm-6 order-sm-1">
-            <img data-aos="flip-left" class="w-100" src="https://images.unsplash.com/photo-1455723576895-6ab1d5abbcb9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1053&q=80" alt="">
+            <img data-aos="flip-left" class="w-100" src="https://hexschool-api.s3.us-west-2.amazonaws.com/custom/HP2L6uTNJRC9kXsmpYtdsPCKsXGw8uqPzvrvi2wb6IF5SsbTWOlS8yiTqaIXKRh7MIibxAMusKgIiHcwDbIpSmNxJENFQIeOQFc2PGVzEefZqIsQhsXjVtC839PJxvF5.jpg" alt="少了相框的照片">
           </div>
         </li>
         <!-- 3 -->
@@ -70,7 +70,7 @@
             </div>
           </div>
           <div class="col-12 col-sm-6">
-            <img data-aos="flip-left" class="w-100" src="https://images.unsplash.com/photo-1514371879740-2e7d2068f502?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=667&q=80" alt="">
+            <img data-aos="flip-left" class="w-100" src="https://hexschool-api.s3.us-west-2.amazonaws.com/custom/S4f3lMDG2Int7NoEo22BKxwSIPOlfdC4JOTEnr8LJjwuEnot9UrAko3XUaWUS3jdWxgJALkCcFyXCRckt55TNivKyfmdeKMPSP5SMaXF4uvlGuIGFEnSkSb166nGtekK.jpg" alt="生活品味陳列示意圖">
           </div>
         </li>
       </ul>
@@ -100,6 +100,6 @@ export default {
 </script>
 <style scoped>
   .home-bgimg {
-    background-image: url(https://images.unsplash.com/photo-1557136806-3e2416df2224?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1868&q=80);
+    background-image: url(https://hexschool-api.s3.us-west-2.amazonaws.com/custom/xqFuPxECRGRwEBAconWjapcJatRME3saZj1rhPyYoVdIQzLxvV2yLZClgH8CriHITLTnRwlAGqEmY3rIQ3qSTvcuFAo1R5A6eucgygrQLUxRoGLeOPZ54EBr7tLE6som.jpg);
   }
 </style>
